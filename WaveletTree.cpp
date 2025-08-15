@@ -124,21 +124,19 @@ int WaveletTree::rank(wavelet_node* node, int value, size_t pos) {
     size_t new_pos; 
 
     if (value <= mid) {
-        // If the `value` is in the left child's range, we only care about elements
-        // that went left in the current node.
+       
         if (!node->left) {
             return 0; // If no left child, no occurrences of value in this branch.
         }
-        // The new position is the count of elements that went left up to `pos`.
+    
         new_pos = node->bit_prefix[pos];
         return rank(node->left, value, new_pos); // Recurse on the left child
     } else {
-        // If the `value` is in the right child's range, we only care about elements
-        // that went right in the current node.
+     
         if (!node->right) {
-            return 0; // If no right child, no occurrences of value in this branch.
+            return 0;
         }
-        // The new position is the count of elements that went right up to `pos`.
+    
         new_pos = pos - node->bit_prefix[pos];
         return rank(node->right, value, new_pos); // Recurse on the right child
     }
@@ -151,11 +149,10 @@ int WaveletTree::select(int value, int k) {
     return select_recursive(root, value, k); // call helper
 }
 
-// private helper (must be const as declared in header)
+//Recursive Function
 int WaveletTree::select_recursive(wavelet_node* node, int value, int k) const {
     if (!node) return -1;
 
-    // Leaf node
     if (node->lo == node->hi) {
         return (node->lo == value) ? k : -1;
     }

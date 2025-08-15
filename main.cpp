@@ -52,12 +52,12 @@ int main() {
 
     cout << "Wavelet Tree built!!!" << endl;
 
-    // Step 4: Test queries
+    // Step 4: Test
     wavelet_node* root = wt.get_root();
 
-    // Access test
+    // Access Function
     size_t pos;
-    cout << "Enter position to access (0-based): ";
+    cout << "Enter position to access: ";
     cin >> pos;
     if (pos < data.size()) {
         cout << "Value at position " << pos << ": " << wt.access(root, pos) << endl;
@@ -65,11 +65,11 @@ int main() {
         cout << "Invalid position!" << endl;
     }
 
-    // Rank test
+    // Rank Function
     int val;
     cout << "Enter value that you would like to count: ";
     cin >> val;
-    cout << "Enter position (exclusive) for rank: ";
+    cout << "Enter position for rank: ";
     cin >> pos;
     if (pos <= data.size()) {
         cout << "Rank(" << val << ", " << pos << ") = " << wt.rank(root, val, pos) << endl;
@@ -77,11 +77,11 @@ int main() {
         cout << "Invalid position!" << endl;
     }
 
-    // Select test
+    // Select Function
     int k;
     cout << "Enter value for select: ";
     cin >> val;
-    cout << "Enter occurrence index (0-based): ";
+    cout << "Enter occurrence index: ";
     cin >> k;
     int sel_pos = wt.select(val, k);
     if (sel_pos >= 0 && sel_pos < (int)data.size()) {

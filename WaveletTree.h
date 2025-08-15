@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include <cstddef> // for size_t
+#include <cstddef> 
 
 using namespace std;
 
@@ -12,7 +12,7 @@ using namespace std;
 struct wavelet_node {
   int lo;                     // Minimum value in this node's range
   int hi;                     // Maximum value in this node's range
-  vector<int> bit_prefix;     // Prefix sums: bit_prefix[i] = # of left elements in [0, i)
+  vector<int> bit_prefix;    
   wavelet_node* left;         // Left child
   wavelet_node* right;        // Right child
 };
@@ -45,7 +45,7 @@ public:
   int rank(wavelet_node* node, int value, size_t pos);
 
   // Select: return the position of the k-th occurrence of value.
-  // k is 0-indexed (k=0 means first occurrence).
+  // k is 0-indexed (k=0 means first occurrence)
   int select(int value, int k);
 
   // Get root pointer
